@@ -1,22 +1,43 @@
 <template>
-  <div>
-    <div v-if="isLoading">
-      LOADING
-    </div>
-    <div v-else-if="this.planets.length === 0">
-      <b-button variant="primary" v-on:click="restart()">Restart</b-button>
-      RESTART
-    </div>
-    <div v-else-if="this.planet.films">
-      <b-card :header="this.planet.name">
-        <b-card-text>Population:  {{ this.planet.population }}</b-card-text>
-        <b-card-text>Climate: {{ this.planet.climate }}</b-card-text>
-        <b-card-text>Terrain: {{ this.planet.terrain }}</b-card-text>
-        <b-card-text>Featured in {{ this.planet.films.length}} {{ this.planet.films.length | pluralizeFilms }}</b-card-text>
-      </b-card>
-      <b-button variant="primary" v-on:click="pickRandomPlanet()">Next</b-button>
-    </div>
-  </div>
+  <b-container class="h-100">
+    <b-row align-v="center" class="h-100">
+      <div v-if="isLoading" >
+        LOADING
+      </div>
+
+      <div v-else-if="this.planets.length === 0" align-v="center">
+        <b-button variant="primary" v-on:click="restart()">Restart</b-button>
+      </div>
+
+      <div v-else-if="this.planet.films" class="h-80 w-100">
+        <b-row align-v="center" class="h-80">
+          <b-col class="h-100">
+            <div class="w-100 h-100">
+              <b-card no-body class="card--planet w-100 h-100">
+                <h1 slot="header" class="mb-0">{{ this.planet.name.toUpperCase() }}</h1>
+                <b-card-body>
+                  <b-row align-v="center" class="h-100">
+                    <b-col class="h-100" align-v="center" >
+                      <h2>Population:  {{ this.planet.population }}</h2>
+                      <h2>Climate: {{ this.planet.climate }}</h2>
+                      <h2>Terrain: {{ this.planet.terrain }}</h2>
+                    </b-col>
+                  </b-row>
+                </b-card-body>
+                <b-card-footer>
+                  Featured in {{ this.planet.films.length}} {{ this.planet.films.length | pluralizeFilms }}
+                </b-card-footer>
+              </b-card>
+            </div>
+          </b-col>
+        </b-row>
+
+        <b-row class="pt-2 h-20" align-v="center">
+          <b-button variant="primary" class="mx-auto p-2" size="lg" v-on:click="pickRandomPlanet()">Next</b-button>
+        </b-row>
+      </div>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
@@ -72,5 +93,10 @@
 </script>
 
 <style scoped lang="scss">
-
+  .h-80 {
+    height: 80%;
+  }
+  .h-20 {
+    height: 20%;
+  }
 </style>

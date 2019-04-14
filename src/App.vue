@@ -1,6 +1,6 @@
 <template>
-  <div id="app" class="container">
-    <PlanetCard msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <PlanetCard/>
   </div>
 </template>
 
@@ -16,15 +16,17 @@ export default {
 </script>
 
 <style lang="scss">
-// #app {
-//   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-//   text-align: center;
-//   color: #2c3e50;
-//   margin-top: 60px;
-// }
-#app {
-  background-color: #eaeaea
-}
+  @import '~bootstrap/scss/bootstrap.scss';
+  @import '~bootstrap-vue/src/index.scss';
+
+  // $body-bg: #eaeaea;
+  #app {
+    // font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    height: 100vh;
+    background-color: #eaeaea;
+  }
 </style>
