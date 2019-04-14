@@ -1,12 +1,21 @@
 <template>
   <div>
-    <b-card :header="this.planet.name" v-if="this.planet.films">
-      <b-card-text>Population:  {{ this.planet.population }}</b-card-text>
-      <b-card-text>Climate: {{ this.planet.climate }}</b-card-text>
-      <b-card-text>Terrain: {{ this.planet.terrain }}</b-card-text>
-      <b-card-text>Featured in {{ this.planet.films.length}} {{ this.planet.films.length | pluralizeFilms }}</b-card-text>
-    </b-card>
-    <b-button variant="primary">Next</b-button>
+    <div v-if="isLoading">
+      LOADING
+    </div>
+    <div v-else-if="this.planets.length === 0">
+      <b-button variant="primary" v-on:click="restart()">Restart</b-button>
+      RESTART
+    </div>
+    <div v-else-if="this.planet.films">
+      <b-card :header="this.planet.name">
+        <b-card-text>Population:  {{ this.planet.population }}</b-card-text>
+        <b-card-text>Climate: {{ this.planet.climate }}</b-card-text>
+        <b-card-text>Terrain: {{ this.planet.terrain }}</b-card-text>
+        <b-card-text>Featured in {{ this.planet.films.length}} {{ this.planet.films.length | pluralizeFilms }}</b-card-text>
+      </b-card>
+      <b-button variant="primary" v-on:click="pickRandomPlanet()">Next</b-button>
+    </div>
   </div>
 </template>
 
@@ -18,13 +27,15 @@
     data: () => {
       return {
         planets: [],
-        planet: Object
+        usedPlanets: [],
+        planet: Object,
+        isLoading: true
       }
     },
     async mounted() {
       await this.getAllPlanets('https://swapi.co/api/planets/')
       await this.pickRandomPlanet()
-      console.log(this.planet)
+      this.isLoading = false
     },
     methods: {
       getAllPlanets(url){
@@ -41,8 +52,14 @@
           })
       },
       pickRandomPlanet() {
-        let planetPosition = Math.floor(Math.random() * (61) + 1) - 1;
+        this.planet = null;
+        if (!this.planets.length) return
+        let planetPosition = Math.floor(Math.random() * (this.planets.length) + 1) - 1;
         this.planet = this.planets[planetPosition]
+        this.usedPlanets.push(this.planets.splice(planetPosition,1)[0])
+      },
+      restart() {
+        this.planets = this.usedPlanets.splice(0, this.usedPlanets.length);
       }
     },
     filters: {
