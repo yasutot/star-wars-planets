@@ -1,11 +1,11 @@
 <template>
   <div class="container h-100">
-    <div v-if="isLoading" >
-      LOADING
+    <div v-if="isLoading">
+      <Loading/>
     </div>
 
     <div v-else-if="this.planets.length === 0" align-v="center">
-      <button variant="primary" v-on:click="restart()">RESTART</button>
+      <button class="btn" id="button-restart" variant="primary" v-on:click="restart()">RESTART</button>
     </div>
 
     <div v-else-if="planet.films" class="h-100 pt-5 pb-5">
@@ -33,6 +33,7 @@
 
 <script>
   import axios from 'axios';
+  import Loading from './Loading.vue'
 
   export default {
     name: 'PlanetCard',
@@ -43,6 +44,9 @@
         planet: Object,
         isLoading: true
       }
+    },
+    components: {
+      Loading
     },
     async mounted() {
       await this.getAllPlanets('https://swapi.co/api/planets/')
@@ -128,6 +132,14 @@
   button:active, button:hover {
     background: #ac856c;
     color: #212529;
+  }
+  #button-restart {
+    position: fixed;
+    width: 15rem;
+    height: 15rem;
+    font-size: 2rem;
+    top: calc( 50% - ( 15rem / 2) );
+    right: calc( 50% - ( 15rem / 2) );
   }
   @media only screen and (max-width: 768px) {
     .card-body > span {
