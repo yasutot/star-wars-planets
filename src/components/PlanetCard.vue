@@ -124,12 +124,12 @@
   button {
     color: #ac856c;
     border: 2px solid #ac856c;
-    background: black;
+    background: transparent;
     width: 10rem;
     font-family: STARWARS;
   }
 
-  button:hover {
+  button:active {
     background: #ac856c;
     color: #212529;
   }
