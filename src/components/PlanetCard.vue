@@ -129,7 +129,7 @@
     font-family: STARWARS;
   }
 
-  button:active, button:hover {
+  button:hover {
     background: #ac856c;
     color: #212529;
   }
