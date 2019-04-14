@@ -25,7 +25,7 @@
         </div>
       </div>
       <div class="row">
-        <button class="btn mx-auto shadow" v-on:click="pickRandomPlanet()">NEXT</button>
+        <button class="btn mx-auto" v-on:click="pickRandomPlanet()">NEXT</button>
       </div>
     </div>
   </div>
@@ -121,12 +121,15 @@
   .card-header {
     font-family: STARWARS;
   }
-  button {
+  button,
+  button:hover,
+  button:focus {
     color: #ac856c;
     border: 2px solid #ac856c;
     background: transparent;
     width: 10rem;
     font-family: STARWARS;
+    box-shadow: none;
   }
 
   button:active {
