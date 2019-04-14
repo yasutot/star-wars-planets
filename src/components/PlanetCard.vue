@@ -1,43 +1,34 @@
 <template>
-  <b-container class="h-100">
-    <b-row align-v="center" class="h-100">
-      <div v-if="isLoading" >
-        LOADING
-      </div>
+  <div class="container h-100">
+    <div v-if="isLoading" >
+      LOADING
+    </div>
 
-      <div v-else-if="this.planets.length === 0" align-v="center">
-        <b-button variant="primary" v-on:click="restart()">Restart</b-button>
-      </div>
+    <div v-else-if="this.planets.length === 0" align-v="center">
+      <button variant="primary" v-on:click="restart()">RESTART</button>
+    </div>
 
-      <div v-else-if="this.planet.films" class="h-80 w-100">
-        <b-row align-v="center" class="h-80">
-          <b-col class="h-100">
-            <div class="w-100 h-100">
-              <b-card no-body class="card--planet w-100 h-100">
-                <h1 slot="header" class="mb-0">{{ this.planet.name.toUpperCase() }}</h1>
-                <b-card-body>
-                  <b-row align-v="center" class="h-100">
-                    <b-col class="h-100" align-v="center" >
-                      <h2>Population:  {{ this.planet.population }}</h2>
-                      <h2>Climate: {{ this.planet.climate }}</h2>
-                      <h2>Terrain: {{ this.planet.terrain }}</h2>
-                    </b-col>
-                  </b-row>
-                </b-card-body>
-                <b-card-footer>
-                  Featured in {{ this.planet.films.length}} {{ this.planet.films.length | pluralizeFilms }}
-                </b-card-footer>
-              </b-card>
+    <div v-else-if="planet.films" class="h-100 pt-5 pb-5">
+      <div class="row h-90 pb-4">
+        <div class="col">
+          <div class="card w-100 h-100 shadow-sm">
+            <div class="card-header bg-white">
+              <h1 class="mb-0">{{ this.planet.name.toUpperCase() }}</h1>
             </div>
-          </b-col>
-        </b-row>
-
-        <b-row class="pt-2 h-20" align-v="center">
-          <b-button variant="primary" class="mx-auto p-2" size="lg" v-on:click="pickRandomPlanet()">Next</b-button>
-        </b-row>
+            <div class="card-body pt-5 pb-5">
+              <span class="w-100">POPULATION: {{ this.planet.population.toUpperCase() }}</span>
+              <span class="w-100">CLIMATE: {{ this.planet.climate.toUpperCase() }}</span>
+              <span class="w-100">TERRAIN: {{ this.planet.terrain.toUpperCase() }}</span>
+              <span class="w-100 mt-2 justify-content-center">FEATURED IN {{ this.planet.films.length }} {{ this.planet.films.length | pluralizeFilms }}</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </b-row>
-  </b-container>
+      <div class="row">
+        <button class="btn mx-auto shadow" v-on:click="pickRandomPlanet()">NEXT</button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -85,18 +76,63 @@
     },
     filters: {
       pluralizeFilms: (val => {
-        if (val === 1) return "film"
-        return "films"
+        if (val === 1) return "FILM"
+        return "FILMS"
       })
     }
   }
 </script>
 
 <style scoped lang="scss">
-  .h-80 {
-    height: 80%;
+  @font-face{
+    font-family:STARWARS;
+    font-style:normal;
+    font-weight:400;
+    src:url('../assets/fonts/STARWARS.woff') format('woff'),
+    url('../assets/fonts/STARWARS.ttf') format('truetype')
+  }
+
+  .h-90 {
+    height: 90%;
   }
   .h-20 {
     height: 20%;
   }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > span {
+      font-size: 1.5rem;
+      display: flex;
+      text-align: left;
+    }
+
+    > span:last-child {
+      font-size: 1.3rem;
+      padding-top: 1rem;
+    }
+  }
+  .card-header {
+    font-family: STARWARS;
+  }
+  button {
+    color: #ac856c;
+    border: 2px solid #ac856c;
+    background: black;
+    width: 10rem;
+    font-family: STARWARS;
+  }
+
+  button:active, button:hover {
+    background: #ac856c;
+    color: #212529;
+  }
+  @media only screen and (max-width: 768px) {
+    .card-body > span {
+      font-size: 1.3rem;
+    }
+  }
+
 </style>
