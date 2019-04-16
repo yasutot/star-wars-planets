@@ -7,6 +7,3 @@
     name: 'AppNextButton'
   }
 </script>
-
-<style scoped lang="scss">
-</style>

@@ -1,29 +1,17 @@
-# star-wars-planets
+# Star Wars Planets
+Star Wars planets rendered randomly in a card. Made with [Vue.js](https://vuejs.org/).
 
-## Project setup
+### Setup
+```sh
+$ npm install
 ```
-npm install
-```
-
 ### Compiles and hot-reloads for development
+```sh
+$ npm run serve
 ```
-npm run serve
-```
-
 ### Compiles and minifies for production
+```sh
+$ npm run build
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Live
+##### [https://starwars--planets.herokuapp.com/](https://starwars--planets.herokuapp.com/)

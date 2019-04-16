@@ -48,4 +48,16 @@
       font-size: 1.3rem;
     }
   }
+  @media only screen and (max-width: 320px) {
+    .card-header h1 {
+      font-size: 1.8rem
+    }
+    .card-body span {
+      font-size: 1rem !important;
+    }
+    // .card-body > span:last-child {
+    //   font-size: 1rem;
+    //   padding-top: 1rem;
+    // }
+  }
 </style>
