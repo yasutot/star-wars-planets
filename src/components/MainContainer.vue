@@ -1,5 +1,5 @@
 <template>
-  <div class="container h-100">
+  <div class="container height-100">
     <div v-if="isLoading">
       <AppLoadingIcon/>
     </div>
@@ -8,9 +8,9 @@
       <AppRestartButton v-on:restart="restart()"/>
     </div>
 
-    <div v-else-if="this.planet.films" class="h-100 pt-5 pb-5">
+    <div v-else-if="this.planet.films" class="height-100 pt-5 pb-5">
       <div class="row h-90 pb-4">
-        <div class="col h-100">
+        <div class="col height-100">
           <AppPlanetCard v-bind:planet="planet"/>
         </div>
       </div>

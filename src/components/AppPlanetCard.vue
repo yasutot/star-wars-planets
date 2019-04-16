@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-100 h-100 shadow-sm">
+  <div class="card w-100 height-100 shadow-sm">
     <div class="card-header bg-white">
       <h1 class="mb-0">{{ planet.name.toUpperCase() }}</h1>
     </div>
@@ -43,11 +43,6 @@
       padding-top: 1rem;
     }
   }
-  @media only screen and (max-width: 768px) {
-    .card-body > span {
-      font-size: 1.3rem;
-    }
-  }
   @media only screen and (max-width: 320px) {
     .card-header h1 {
       font-size: 1.8rem
@@ -55,9 +50,5 @@
     .card-body span {
       font-size: 1rem !important;
     }
-    // .card-body > span:last-child {
-    //   font-size: 1rem;
-    //   padding-top: 1rem;
-    // }
   }
 </style>
