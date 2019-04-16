@@ -1,5 +1,5 @@
 # Star Wars Planets
-Star Wars planets rendered randomly in a card. Made with [Vue.js](https://vuejs.org/).
+Star Wars planets rendered randomly in a card. Made with [Vue.js](https://vuejs.org/) and [The Star Wars API](https://swapi.co/).
 
 ### Setup
 ```sh
