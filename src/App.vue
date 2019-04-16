@@ -1,22 +1,23 @@
 <template>
   <div id="app">
-    <PlanetCard/>
+    <MainView/>
   </div>
 </template>
 
 <script>
-import PlanetCard from './components/PlanetCard.vue'
+import MainView from './components/MainView.vue'
 
 export default {
   name: 'app',
   components: {
-    PlanetCard
+    MainView
   }
 }
 </script>
 
 <style lang="scss">
   @import '~bootstrap/scss/bootstrap.scss';
+  @import 'assets/scss/style.scss';
 
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;

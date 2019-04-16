@@ -1,0 +1,27 @@
+@font-face{
+    font-family:STARWARS;
+    font-style:normal;
+    font-weight:400;
+    src:url('assets/fonts/STARWARS.woff') format('woff'),
+    url('assets/fonts/STARWARS.ttf') format('truetype')
+}
+.h-90{
+    height: 90%;
+}
+.h-10{
+    height: 10%;
+}
+button.btn-starwars,
+button.btn-starwars:hover,
+button.btn-starwars:focus {
+  color: #ac856c;
+  border: 2px solid #ac856c;
+  background: transparent;
+  width: 10rem;
+  font-family: STARWARS;
+  box-shadow: none;
+}
+button.btn-starwars:active {
+  background: #ac856c;
+  color: #212529;
+}
