@@ -1,14 +1,12 @@
 <template>
-  <div class="container h-100 d-flex justify-content-center">
-    <div class="spinner-border text-primary"  id="loading-spinner" role="status">
-      <span class="sr-only" >Loading...</span>
-    </div>
+  <div class="spinner-border text-primary"  id="loading-spinner" role="status">
+    <span class="sr-only" >Loading...</span>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'Loading'
+    name: 'AppLoadingIcon'
   }
 </script>
 

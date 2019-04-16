@@ -1,28 +1,35 @@
 <template>
-  <div class="h-100">
+  <div class="container h-100">
     <div v-if="isLoading">
-      <Loading/>
+      <AppLoadingIcon/>
     </div>
 
     <div v-else-if="this.planets.length === 0">
-      <Restart v-on:restart="restart()"/>
+      <AppRestartButton v-on:restart="restart()"/>
     </div>
 
     <div v-else-if="this.planet.films" class="h-100 pt-5 pb-5">
-      <PlanetCard v-bind:planet="planet"
-                  v-on:next-planet="pickRandomPlanet()"/>
+      <div class="row h-90 pb-4">
+        <div class="col h-100">
+          <AppPlanetCard v-bind:planet="planet"/>
+        </div>
+      </div>
+      <div class="row h-10">
+        <AppNextButton  v-on:next="pickRandomPlanet()"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
   import axios from 'axios';
-  import Loading from './Loading.vue'
-  import PlanetCard from './PlanetCard.vue'
-  import Restart from './Restart.vue'
+  import AppLoadingIcon from './AppLoadingIcon.vue'
+  import AppRestartButton from './AppRestartButton.vue'
+  import AppNextButton from './AppNextButton.vue'
+  import AppPlanetCard from './AppPlanetCard.vue'
 
   export default {
-    name: 'MainView',
+    name: 'MainContainer',
     data: () => {
       return {
         planets: [],
@@ -30,11 +37,12 @@
         planet: Object,
         isLoading: true
       }
-    },
+    },  
     components: {
-      Loading,
-      PlanetCard,
-      Restart
+      AppLoadingIcon,
+      AppRestartButton,
+      AppNextButton,
+      AppPlanetCard
     },
     async mounted() {
       await this.getAllPlanets('https://swapi.co/api/planets/')

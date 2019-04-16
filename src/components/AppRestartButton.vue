@@ -1,12 +1,10 @@
 <template>
-  <div class="container h-100" align-v="center">
-    <button class="btn btn-starwars" id="button-restart" v-on:click="$emit('restart')">RESTART</button>
-  </div>
+  <button class="btn btn-starwars" id="button-restart" v-on:click="$emit('restart')">RESTART</button>
 </template>
 
 <script>
   export default {
-    name: 'Restart'
+    name: 'AppRestartButton'
   }
 </script>
 
